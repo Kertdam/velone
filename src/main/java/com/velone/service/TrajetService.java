@@ -42,6 +42,8 @@ public class TrajetService {
 	public void update(Integer id, Trajet trajet) {
 		Trajet trajetToUpdate = repository.getOne(id) ;
 		trajetToUpdate.setNom(trajet.getNom()); 
+		trajetToUpdate.setDescription(trajet.getDescription());
+		trajetToUpdate.setDateDepart(trajet.getDateDepart());
 		repository.save(trajetToUpdate);
 	}
 }
