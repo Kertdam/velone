@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Statistique {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column(name="vitesse_moyenne")

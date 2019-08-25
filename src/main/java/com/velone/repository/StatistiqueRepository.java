@@ -8,6 +8,6 @@ import com.velone.entity.Statistique;
 @Repository
 public interface StatistiqueRepository extends JpaRepository<Statistique, Integer> {
 
-	Statistique findByMembreId(int id_user, int id);
+	//Statistique findByMembreId(int id_user);
 
 }

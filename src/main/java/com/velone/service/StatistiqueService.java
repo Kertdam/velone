@@ -43,8 +43,8 @@ public class StatistiqueService {
 
 	// Methode propres ToTest
 
-	public Optional<Statistique> getStatistiqueByMembre(int membre_id) {
-		return repository.findById(membre_id);
-	}
+	//public Optional<Statistique> getStatistiqueByMembre(int membre_id) {
+	//	return repository.findById(membre_id);
+	//}
 
 }
