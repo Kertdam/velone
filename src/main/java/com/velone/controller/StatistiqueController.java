@@ -26,6 +26,11 @@ public class StatistiqueController {
 	@Autowired 
 	StatistiqueService service;
 	
+	@GetMapping("/{id}")
+	public Statistique getStatistiqueById(@PathVariable(required = true) Integer id) {
+		return service.getStatistiqueById(id);
+	}
+	
 	@GetMapping
 	public List<Statistique> getAllStatistique() {
 		return service.getStatistiques();

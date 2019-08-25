@@ -46,5 +46,9 @@ public class StatistiqueService {
 	public List<Statistique> getStatistiqueByMembreId(int membre_id) {
 		return repository.findByMembreId(membre_id);
 	}
+	
+	public Statistique getStatistiqueById(int id) {
+		return repository.getOne(id);
+	}
 
 }
