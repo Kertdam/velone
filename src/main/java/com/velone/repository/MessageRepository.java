@@ -10,6 +10,8 @@ import com.velone.entity.Message;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-	List<Message> findByMembreId(Integer id);
+	public List<Message> findByMembreId(Integer id);
+
+	public List<Message> findAllByMembreIdIn(List<Integer> list);
 
 }

@@ -45,9 +45,15 @@ public class MessageController {
 		return service.getMessageByMembreId(id);
 	}
 
+	// OK
 	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable(required = true) Integer id) {
 		service.delete(id);
+	}
+
+	@GetMapping("idtrajet/{id}")
+	public void getAllMessageInTrajet(@PathVariable(required = true) Integer id) {
+		service.getAllMessageInTrajet(id);
 	}
 
 }
