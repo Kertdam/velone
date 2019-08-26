@@ -1,6 +1,5 @@
 package com.velone.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,26 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velone.entity.Message;
-import com.velone.entity.Utilisateur;
 import com.velone.service.MessageService;
 
 @RestController
 @RequestMapping("/message")
 public class MessageController {
-	
+
 	@Autowired
 	MessageService service;
-	
+
 	@GetMapping("/{id}")
 	public Optional<Message> getById(@PathVariable(required = true) Integer id) {
-		return service.getMessageById(id);
+		return service.getMessageByMembreId(id);
 	}
-	
+
 	@PostMapping
 	public void postMessageEntity(@RequestBody Message message) {
 		service.add(message);
 	}
-	
-	
 
 }
