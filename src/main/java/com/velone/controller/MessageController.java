@@ -1,9 +1,9 @@
 package com.velone.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,9 +39,15 @@ public class MessageController {
 		return service.getMessageById(id);
 	}
 
+	// OK
 	@GetMapping("membreid/{id}")
-	public Optional<Message> getById(@PathVariable(required = true) Integer id) {
+	public List<Message> getMessageByMembreId(@PathVariable(required = true) Integer id) {
 		return service.getMessageByMembreId(id);
+	}
+
+	@DeleteMapping("/{id}")
+	public void deleteById(@PathVariable(required = true) Integer id) {
+		service.delete(id);
 	}
 
 }
