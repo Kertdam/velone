@@ -15,24 +15,34 @@ public class MessageService {
 	@Autowired
 	MessageRepository repository;
 
+	// Add a message
 	public void add(Message message) {
 		repository.save(message);
 	}
 
+	// Delete a message by Id
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
-	public List<Message> getMessages() {
+	// Get all
+	public List<Message> getAllMessages() {
 		return repository.findAll();
 	}
 
+	// Get one by id
+	public Message getMessageById(Integer id) {
+		return repository.getOne(id);
+	}
+
+	// update a message
 	public void update(Integer id, Message mess) {
 		Message messToUpdate = repository.getOne(id);
 		messToUpdate.setTexte(mess.getTexte());
 		repository.save(messToUpdate);
 	}
 
+	// Get by utilisateur
 	public Optional<Message> getMessageByMembreId(Integer id) {
 		return repository.findByMembreId(id);
 	}
