@@ -6,11 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.velone.entity.Equipement;
 import com.velone.entity.Membre;
-import com.velone.entity.Trajet;
 import com.velone.entity.Utilisateur;
-import com.velone.repository.EquipementRepository;
 import com.velone.repository.MembreRepository;
 
 @Service
@@ -22,20 +19,18 @@ public class MembreService {
 		repository.save(membre);
 	}
 
-	
-
 	public List<Membre> getMembres() {
 		return repository.findAll();
 	}
 
-	/*
-	 * public List<Membre> getByTrajetId(Integer id){ return
-	 * repository.findByTrajetId(id); }
-	 */
+	public List<Membre> getByTrajetId(Integer id) {
+		return repository.findByTrajetId(id);
+	}
+
 	/*
 	 * public List<Membre> getTrajetById(Integer id) { // TODO Auto-generated method
 	 * stub return repository.getTrajetsByUtilisateurId(id);
-	 * 
+	 *
 	 * }
 	 */
 	public List<Membre> getByUtilisateur(Utilisateur utilisateur) {
@@ -43,33 +38,33 @@ public class MembreService {
 		return repository.findAllByUtilisateur(utilisateur);
 	}
 
-	public List<Membre> getByMembreId(Integer id) {
-		// TODO Auto-generated method stub
+	public List<Membre> getByUtilisateurId(Integer id) {
 		return repository.findByUtilisateurId(id);
 	}
-	
+
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
-	
-	  public void update(Integer id, Membre membre) { Membre membreToUpdate =
-	  repository.getOne(id) ; membreToUpdate.setId(id);
-	  membreToUpdate.setTrajet(membre.getTrajet());
-	  membreToUpdate.setUtilisateur(membre.getUtilisateur());
-	  
-	  repository.save(membreToUpdate); }
 
+	public void update(Integer id, Membre membre) {
+		Membre membreToUpdate = repository.getOne(id);
+		membreToUpdate.setId(id);
+		membreToUpdate.setTrajet(membre.getTrajet());
+		membreToUpdate.setUtilisateur(membre.getUtilisateur());
+		repository.save(membreToUpdate);
+	}
 
-	 
+	public Optional<Membre> getByMembreId(Integer id) {
+
+		return repository.findById(id);
+	}
+
 	/*
 	 * public void delete(Integer utilisateur_id, Integer trajet_id) { // TODO
 	 * Auto-generated method stub repository.deleteByUtilisateurIdAndTrajetId( );
 	 * //repository.deleteByUtilisateurAndTrajetId(utilisateur_id,trajet_id);
-	 * 
+	 *
 	 * }
 	 */
 
-
-
-	
 }

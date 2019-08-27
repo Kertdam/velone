@@ -13,36 +13,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "message")
 public class Message {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="texte")
-	private String texte;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name ="membre_id")
-	private Membre membre;
-	
-	@JsonIgnoreProperties("message")
-	@OneToMany(mappedBy="message",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Fichier> fichiers;
 
-	/*Constructeurs*/
-	
+	@Column(name = "texte")
+	private String texte;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "membre_id")
+	private Membre membre;
+
+	@JsonIgnoreProperties("message")
+	@OneToMany(mappedBy = "message", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Fichier> fichiers;
+
+	/* Constructeurs */
+
 	public Message() {
-		
+
 	}
-	
-	/*Getters*/
-	
+
+	/* Getters */
+
 	public Integer getId() {
 		return id;
 	}
@@ -55,8 +55,8 @@ public class Message {
 		return membre;
 	}
 
-	/*Setters*/
-	
+	/* Setters */
+
 	public Set<Fichier> getFichiers() {
 		return fichiers;
 	}
@@ -77,8 +77,8 @@ public class Message {
 		this.fichiers = fichiers;
 	}
 
-	/*ToString*/
-	
+	/* ToString */
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -93,7 +93,5 @@ public class Message {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
+
 }

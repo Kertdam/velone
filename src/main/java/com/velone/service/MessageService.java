@@ -1,21 +1,23 @@
 package com.velone.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.velone.entity.Membre;
 import com.velone.entity.Message;
+import com.velone.repository.MembreRepository;
 import com.velone.repository.MessageRepository;
-import com.velone.repository.TrajetRepository;
 
 @Service
 public class MessageService {
 
 	@Autowired
 	MessageRepository repository;
-
-	TrajetRepository repoTrajet;
+	@Autowired
+	MembreRepository repoMembre;
 
 	// Add a message
 	public void add(Message message) {
@@ -37,15 +39,15 @@ public class MessageService {
 		return repository.getOne(id);
 	}
 
-	// Get All Message In Membre
-	// public List<Message> getAllMessageInTrajet(Integer id) {
-
-	// if(repoTrajet.existsById(id)) {
-
-	// }
-	// return ;
-
-	// }
+	// Trouver tous les messages d'un trajet
+	public List<Message> getAllMessageInTrajet(Integer id_trajet) {
+		List<Membre> list = repoMembre.findByTrajetId(id_trajet);
+		List<Integer> listId = new ArrayList<Integer>();
+		for (Membre membre : list) {
+			listId.add((membre.getId()));
+		}
+		return repository.findAllByMembreIdIn(listId);
+	}
 
 	// update a message
 	public void update(Integer id, Message mess) {
