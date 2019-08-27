@@ -35,9 +35,15 @@ public class FichierController {
 		serviceFichier.addFichier(fichier);
 	}
 
-	@DeleteMapping
-	public void deleteById(Integer id) {
+	@DeleteMapping("/{id}")
+	public void deleteById(@PathVariable(required = true) Integer id) {
 		serviceFichier.deleteFileById(id);
+	}
+
+	@GetMapping("trajetid/{id}")
+	public List<Fichier> getAllFichierInTrajet(@PathVariable(required = true) Integer id) {
+		return serviceFichier.getAllFIchierInTrajet(id);
+
 	}
 
 }

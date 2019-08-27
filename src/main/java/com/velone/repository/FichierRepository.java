@@ -10,6 +10,8 @@ import com.velone.entity.Fichier;
 @Repository
 public interface FichierRepository extends JpaRepository<Fichier, Integer> {
 
-	List<Fichier> findAllByMessageId(Integer membreId);
+	public List<Fichier> findAllByMessageId(Integer membreId);
+
+	public List<Fichier> findAllByMessageIdIn(List<Integer> list);
 
 }
