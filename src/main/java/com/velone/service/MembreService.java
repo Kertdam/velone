@@ -1,6 +1,7 @@
 package com.velone.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class MembreService {
 		return repository.findAllByUtilisateur(utilisateur);
 	}
 
-	public List<Membre> getByMembreId(Integer id) {
+	public List<Membre> getByUtilisateurId(Integer id) {
 		return repository.findByUtilisateurId(id);
 	}
 
@@ -51,6 +52,11 @@ public class MembreService {
 		membreToUpdate.setTrajet(membre.getTrajet());
 		membreToUpdate.setUtilisateur(membre.getUtilisateur());
 		repository.save(membreToUpdate);
+	}
+
+	public Optional<Membre> getByMembreId(Integer id) {
+
+		return repository.findById(id);
 	}
 
 	/*

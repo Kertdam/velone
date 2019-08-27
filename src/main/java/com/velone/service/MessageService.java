@@ -41,17 +41,12 @@ public class MessageService {
 
 	// Trouver tous les messages d'un trajet
 	public List<Message> getAllMessageInTrajet(Integer id_trajet) {
-		System.out.println("ahhhhhhhhhhh");
 		List<Membre> list = repoMembre.findByTrajetId(id_trajet);
 		List<Integer> listId = new ArrayList<Integer>();
 		for (Membre membre : list) {
-			System.out.println(membre.getId());
 			listId.add((membre.getId()));
 		}
-		System.out.println(listId);
-
 		return repository.findAllByMembreIdIn(listId);
-
 	}
 
 	// update a message

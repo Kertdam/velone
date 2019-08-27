@@ -1,6 +1,7 @@
 package com.velone.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +28,7 @@ public class MembreController {
 	}
 
 	@GetMapping("/{id}")
-	public List<Membre> getMembreById(@PathVariable(required = true) Integer id) {
+	public Optional<Membre> getMembreById(@PathVariable(required = true) Integer id) {
 		return service.getByMembreId(id);
 	}
 
