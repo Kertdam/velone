@@ -52,8 +52,8 @@ public class MessageController {
 	}
 
 	@GetMapping("idtrajet/{id}")
-	public void getAllMessageInTrajet(@PathVariable(required = true) Integer id) {
-		service.getAllMessageInTrajet(id);
+	public List<Message> getAllMessageInTrajet(@PathVariable(required = true) Integer id) {
+		return service.getAllMessageInTrajet(id);
 	}
 
 }

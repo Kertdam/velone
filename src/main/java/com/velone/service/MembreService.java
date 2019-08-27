@@ -38,7 +38,6 @@ public class MembreService {
 	}
 
 	public List<Membre> getByMembreId(Integer id) {
-
 		return repository.findByUtilisateurId(id);
 	}
 

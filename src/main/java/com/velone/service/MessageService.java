@@ -51,6 +51,7 @@ public class MessageService {
 		System.out.println(listId);
 
 		return repository.findAllByMembreIdIn(listId);
+
 	}
 
 	// update a message
