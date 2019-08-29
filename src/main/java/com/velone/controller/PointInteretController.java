@@ -35,7 +35,7 @@ public class PointInteretController {
 	public void delete(@PathVariable(required = true) Integer id) {
 		service.Delete(id);
 	}
-	@GetMapping("idPointInteret/{id}")
+	@GetMapping("idUtilisateur/{id}")
 	public List<PointInteret> getPointInteretByUtilisateur(@PathVariable(required = true) Integer id){
 		return service.getPointInteretByUtilisateur(id);
 	}
