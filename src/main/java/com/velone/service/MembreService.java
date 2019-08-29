@@ -27,12 +27,6 @@ public class MembreService {
 		return repository.findByTrajetId(id);
 	}
 
-	/*
-	 * public List<Membre> getTrajetById(Integer id) { // TODO Auto-generated method
-	 * stub return repository.getTrajetsByUtilisateurId(id);
-	 *
-	 * }
-	 */
 	public List<Membre> getByUtilisateur(Utilisateur utilisateur) {
 		// TODO Auto-generated method stub
 		return repository.findAllByUtilisateur(utilisateur);
@@ -58,13 +52,4 @@ public class MembreService {
 
 		return repository.findById(id);
 	}
-
-	/*
-	 * public void delete(Integer utilisateur_id, Integer trajet_id) { // TODO
-	 * Auto-generated method stub repository.deleteByUtilisateurIdAndTrajetId( );
-	 * //repository.deleteByUtilisateurAndTrajetId(utilisateur_id,trajet_id);
-	 *
-	 * }
-	 */
-
 }
