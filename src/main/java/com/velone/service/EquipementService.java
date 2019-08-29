@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.velone.entity.Equipement;
-import com.velone.entity.Trajet;
-import com.velone.entity.Utilisateur;
 import com.velone.repository.EquipementRepository;
-import com.velone.repository.TrajetRepository;
 
 @Service
 public class EquipementService {
@@ -25,7 +22,7 @@ public class EquipementService {
 		repository.deleteById(id);
 	}
 
-	public List<Equipement> getEq() {
+	public List<Equipement> getEquipements() {
 		return repository.findAll();
 	}
 
@@ -38,16 +35,16 @@ public class EquipementService {
 	}
 
 	public void update(Integer id, Equipement equipement) {
+
 		Equipement equipementToUpdate = repository.getOne(id);
 		equipementToUpdate.setNom(equipement.getNom());
 		equipementToUpdate.setDescription(equipement.getDescription());
 		equipementToUpdate.setQuantite(equipement.getQuantite());
 		equipementToUpdate.setQuantiteInitiale(equipement.getQuantiteInitiale());
 		equipementToUpdate.setTrajet(equipement.getTrajet());
-
 		repository.save(equipementToUpdate);
-		
 	}
+
 	public List<Equipement> getByTrajetId(Integer id) {
 		// TODO Auto-generated method stub
 		return repository.findByTrajetId(id);
