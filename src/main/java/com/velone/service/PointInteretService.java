@@ -22,12 +22,13 @@ public class PointInteretService {
 	public List<PointInteret> getPointInterets(){
 		 return repository.findAll();	
 	}
-	public PointInteret getPointInteret(Integer id ){
+	public PointInteret getPointInteretById(Integer id ){
 		return repository.getOne(id);
 	}
 	public List<PointInteret>getPointInteretByUtilisateur(Integer id){
 		return repository.findByUtilisateur(id);
 	}
+	
 	
 	public void update(Integer id, PointInteret pointInteret) {
 		PointInteret pointInteretToUpdate = repository.getOne(id);

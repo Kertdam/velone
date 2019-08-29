@@ -42,8 +42,8 @@ public class EtapeController{
 		return service.getEtape(id) ;	
 	}
 	
-	@GetMapping("idEtape/{id}")
-	public List <Etape> getEtapeByIdTrajet(@PathVariable(required = true) Integer id) {
+	@GetMapping("idTrajet/{id}")
+	public List <Etape> getEtapesByIdTrajet(@PathVariable(required = true) Integer id) {
 		return service.getEtapeByTrajetId(id);
 	}
 	@PutMapping("/{id}") 
