@@ -1,7 +1,6 @@
 package com.velone.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,38 +15,40 @@ import org.springframework.web.bind.annotation.RestController;
 import com.velone.entity.Etape;
 import com.velone.service.EtapeService;
 
-@RequestMapping("/etape")
+@RequestMapping("/etapes")
 @RestController
-public class EtapeController{
-	
-	@Autowired EtapeService service; 
-	
+public class EtapeController {
+
+	@Autowired
+	EtapeService service;
+
 	@GetMapping("")
 	public List<Etape> getEtapes() {
 		return service.getEtapes();
 	}
 
-	@PostMapping ("")
+	@PostMapping("")
 	public void postEtapeEntity(@RequestBody Etape etape) {
-		service.add(etape);	
+		service.add(etape);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable(required = true) Integer id) {
 		service.Delete(id);
 	}
-	
-	@GetMapping ("/{id}")
+
+	@GetMapping("/{id}")
 	public Etape getEtapeById(@PathVariable(required = true) Integer id) {
-		return service.getEtape(id) ;	
+		return service.getEtape(id);
 	}
-	
-	@GetMapping("idTrajet/{id}")
-	public List <Etape> getEtapesByIdTrajet(@PathVariable(required = true) Integer id) {
+
+	@GetMapping("trajetId/{id}")
+	public List<Etape> getEtapesByIdTrajet(@PathVariable(required = true) Integer id) {
 		return service.getEtapeByTrajetId(id);
 	}
-	@PutMapping("/{id}") 
-	public void update (@PathVariable(required = true)Integer id, @RequestBody Etape etape ) {
+
+	@PutMapping("/{id}")
+	public void update(@PathVariable(required = true) Integer id, @RequestBody Etape etape) {
 		service.update(id, etape);
 	}
 }

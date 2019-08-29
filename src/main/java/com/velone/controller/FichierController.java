@@ -14,7 +14,7 @@ import com.velone.entity.Fichier;
 import com.velone.service.FichierService;
 
 @RestController
-@RequestMapping("/fichier")
+@RequestMapping("/fichiers")
 public class FichierController {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class FichierController {
 		return serviceFichier.getFichierById(id);
 	}
 
-	@GetMapping("message/{id}")
+	@GetMapping("messageId/{id}")
 	public List<Fichier> getFichierByMessageId(@PathVariable(required = true) Integer id) {
 		return serviceFichier.getFichierByMessageId(id);
 	}
@@ -40,7 +40,7 @@ public class FichierController {
 		serviceFichier.deleteFileById(id);
 	}
 
-	@GetMapping("trajetid/{id}")
+	@GetMapping("trajetId/{id}")
 	public List<Fichier> getAllFichierInTrajet(@PathVariable(required = true) Integer id) {
 		return serviceFichier.getAllFIchierInTrajet(id);
 

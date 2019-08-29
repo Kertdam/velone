@@ -9,25 +9,13 @@ import com.velone.entity.Trajet;
 import com.velone.entity.Utilisateur;
 
 public interface MembreRepository extends JpaRepository<Membre, Integer> {
+
 	public List<Membre> findAllByTrajet(Trajet entity);
-
-//	public List<Membre> findUtilisateurById();
-
-	// public List<Membre> getTrajetsByUtilisateurId(Integer id);
-
-	// public List<Membre> findUtilisateurById();
 
 	public List<Membre> findAllByUtilisateur(Utilisateur utilisateur);
 
 	public List<Membre> findByTrajetId(Integer id);
 
 	public List<Membre> findByUtilisateurId(Integer id);
-
-	// public void deleteById(Integer utilisateur_id, Integer trajet_id);
-
-	// public void deleteByUtilisateurAndTrajetId(Integer utilisateur_id, Integer
-	// trajet_id);
-
-	// public void deleteByUtilisateurIdAndTrajetId();
 
 }

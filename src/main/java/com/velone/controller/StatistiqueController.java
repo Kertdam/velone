@@ -14,45 +14,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velone.entity.Statistique;
-import com.velone.entity.Trajet;
 import com.velone.service.StatistiqueService;
-
 
 @CrossOrigin
 @RestController
-@RequestMapping("/statistique")
+@RequestMapping("/statistiques")
 public class StatistiqueController {
-	
-	@Autowired 
+
+	@Autowired
 	StatistiqueService service;
-	
+
 	@GetMapping("/{id}")
 	public Statistique getStatistiqueById(@PathVariable(required = true) Integer id) {
 		return service.getStatistiqueById(id);
 	}
-	
+
 	@GetMapping
 	public List<Statistique> getAllStatistique() {
 		return service.getStatistiques();
 	}
-	
+
 	@PostMapping
 	public void postStatistiqueEntity(@RequestBody Statistique stat) {
 		service.add(stat);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void deleteByID(@PathVariable(required = true) Integer id) {
 		service.delete(id);
 	}
-	
+
 	@PutMapping("/{id}")
-	public void update(@PathVariable(required = true)Integer id, @RequestBody Statistique stat){
+	public void update(@PathVariable(required = true) Integer id, @RequestBody Statistique stat) {
 		service.update(id, stat);
 	}
-	
-	@GetMapping("idmembre/{id}")
-	public List<Statistique> getStatistiqueByMembreId(@PathVariable(required = true)Integer id) {
+
+	@GetMapping("membreId/{id}")
+	public List<Statistique> getStatistiqueByMembreId(@PathVariable(required = true) Integer id) {
 		return service.getStatistiqueByMembreId(id);
 	}
 

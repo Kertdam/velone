@@ -19,10 +19,11 @@ import com.velone.service.UtilisateurService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/utilisateur")
+@RequestMapping("/utilisateurs")
 public class UtilisateurController {
 
-	@Autowired UtilisateurService service;
+	@Autowired
+	UtilisateurService service;
 
 	@GetMapping
 	public List<Utilisateur> getUsers() {
@@ -36,23 +37,23 @@ public class UtilisateurController {
 
 	@GetMapping("/{id}")
 	public Optional<Utilisateur> getById(@PathVariable(required = true) Integer id) {
-		return service.getUtilisateurById(id);
+		return service.getUserById(id);
 	}
-	
+
 	@GetMapping("/{nom}/{prenom}")
-	public List<Utilisateur> getByNomOrPrenom(@PathVariable String nom,@PathVariable String prenom) {
-		System.out.println("Controller "+nom+"   "+prenom);
-		return service.getUtilisateurByNomOrPrenom(nom,prenom);
+	public List<Utilisateur> getByNomOrPrenom(@PathVariable String nom, @PathVariable String prenom) {
+		System.out.println("Controller " + nom + "   " + prenom);
+		return service.getUserByNomOrPrenom(nom, prenom);
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable(required = true) Integer id) {
-		service.delete(id);
+	public void deleteById(@PathVariable(required = true) Integer id) {
+		service.deleteById(id);
 	}
 
 	@PutMapping("/{id}")
-	public void update(@PathVariable(required = true)Integer id, @RequestBody Utilisateur user){
-		service.update(id,user);
+	public void updateById(@PathVariable(required = true) Integer id, @RequestBody Utilisateur user) {
+		service.updateById(id, user);
 	}
-	
+
 }

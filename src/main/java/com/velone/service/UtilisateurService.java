@@ -17,34 +17,34 @@ public class UtilisateurService {
 	public void add(Utilisateur user) {
 		repository.save(user);
 	}
-	
-	public void delete(Integer id) {
+
+	public void deleteById(Integer id) {
 		repository.deleteById(id);
 	}
-	
+
 	public List<Utilisateur> getUsers() {
 		return repository.findAll();
 	}
-	
-	public Optional<Utilisateur> getUtilisateurById(Integer id) {
+
+	public Optional<Utilisateur> getUserById(Integer id) {
 		return repository.findById(id);
 	}
 
-	public List<Utilisateur> getUtilisateurByNomOrPrenom(String nom, String prenom) {
-		System.out.println(nom+"   "+prenom);
-		return repository.findByNomOrPrenom(nom,prenom);
+	public List<Utilisateur> getUserByNomOrPrenom(String nom, String prenom) {
+		System.out.println(nom + "   " + prenom);
+		return repository.findByNomOrPrenom(nom, prenom);
 	}
-	
-	public void update(Integer id, Utilisateur user) {
-		Utilisateur userToUpdate = repository.getOne(id) ;
-		userToUpdate.setNom(user.getNom()); 
+
+	public void updateById(Integer id, Utilisateur user) {
+		Utilisateur userToUpdate = repository.getOne(id);
+		userToUpdate.setNom(user.getNom());
 		userToUpdate.setPrenom(user.getPrenom());
-		userToUpdate.setDateNaissance(user.getDateNaissance()); 
-		userToUpdate.setAdresse(user.getAdresse()); 
+		userToUpdate.setDateNaissance(user.getDateNaissance());
+		userToUpdate.setAdresse(user.getAdresse());
 		userToUpdate.setVille(user.getVille());
-		userToUpdate.setCodePostal(user.getCodePostal()); 
-		userToUpdate.setMail(user.getMail()); 
-		userToUpdate.setPassword(user.getPassword()); 
+		userToUpdate.setCodePostal(user.getCodePostal());
+		userToUpdate.setMail(user.getMail());
+		userToUpdate.setPassword(user.getPassword());
 		repository.save(userToUpdate);
 	}
 }

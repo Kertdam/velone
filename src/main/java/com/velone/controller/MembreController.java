@@ -16,14 +16,14 @@ import com.velone.entity.Membre;
 import com.velone.service.MembreService;
 
 @RestController
-@RequestMapping("/membre")
+@RequestMapping("/membres")
 public class MembreController {
 
 	@Autowired
 	MembreService service;
 
 	@GetMapping("")
-	public List<Membre> getMembre() {
+	public List<Membre> getMembres() {
 		return service.getMembres();
 	}
 
@@ -42,7 +42,7 @@ public class MembreController {
 		service.update(id, membre);
 	}
 
-	@GetMapping("idtrajet/{id}")
+	@GetMapping("trajetId/{id}")
 	public List<Membre> getAllMembreInTrajet(@PathVariable(required = true) Integer id) {
 		return service.getByTrajetId(id);
 
