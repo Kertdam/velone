@@ -1,35 +1,39 @@
 package com.velone.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.velone.entity.Etape;
 import com.velone.entity.PointInteret;
 import com.velone.repository.PointInteretRepository;
 
 @Service
 public class PointInteretService {
-	
+
 	@Autowired
 	PointInteretRepository repository;
-	public void add(PointInteret  pointInteret) {
+
+	public void add(PointInteret pointInteret) {
 		repository.save(pointInteret);
 	}
-	public void Delete(Integer id) {
+
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
-	public List<PointInteret> getPointInterets(){
-		 return repository.findAll();	
+
+	public List<PointInteret> getPointsInteret() {
+		return repository.findAll();
 	}
-	public PointInteret getPointInteretById(Integer id ){
+
+	public PointInteret getPointInteretById(Integer id) {
 		return repository.getOne(id);
 	}
-	public List<PointInteret>getPointInteretByUtilisateur(Integer id){
+
+	public List<PointInteret> getPointInteretByUtilisateurId(Integer id) {
 		return repository.findByUtilisateur(id);
 	}
-	
-	
+
 	public void update(Integer id, PointInteret pointInteret) {
 		PointInteret pointInteretToUpdate = repository.getOne(id);
 		pointInteretToUpdate.setDescription(pointInteret.getDescription());
@@ -39,7 +43,7 @@ public class PointInteretService {
 		pointInteretToUpdate.setNom(pointInteret.getNom());
 		pointInteretToUpdate.setQuantite(pointInteret.getQuantite());
 		pointInteretToUpdate.setUtilisateur(pointInteret.getUtilisateur());
-		
+
 	}
 
 }

@@ -12,44 +12,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.velone.entity.Etape;
 import com.velone.entity.PointInteret;
 import com.velone.service.PointInteretService;
 
-@RequestMapping("/pointinteret")
+@RequestMapping("/pointsinteret")
 @RestController
 public class PointInteretController {
-	
-     @Autowired PointInteretService service; 
-	
+
+	@Autowired
+	PointInteretService service;
+
 	@GetMapping("")
-	public List<PointInteret> get() {
-		return service.getPointInterets();
+	public List<PointInteret> getPointsInteret() {
+		return service.getPointsInteret();
 	}
-	
-	@PostMapping ("")
+
+	@PostMapping("")
 	public void postPointInteretEntity(@RequestBody PointInteret pointInteret) {
-		service.add(pointInteret);	
+		service.add(pointInteret);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable(required = true) Integer id) {
-		service.Delete(id);
+		service.delete(id);
 	}
-	
-	@GetMapping("idUtilisateur/{id}")
-	public List<PointInteret> getPointInteretByUtilisateur(@PathVariable(required = true) Integer id){
-		return service.getPointInteretByUtilisateur(id);
+
+	@GetMapping("utilisateurId/{id}")
+	public List<PointInteret> getPointInteretByUtilisateurId(@PathVariable(required = true) Integer id) {
+		return service.getPointInteretByUtilisateurId(id);
 	}
-	
+
 	@GetMapping("/{id}")
 	public PointInteret getById(@PathVariable(required = true) Integer id) {
 		return service.getPointInteretById(id);
 	}
-	
-	
+
 	@PutMapping("/{id}")
-	 public void update(@PathVariable(required = true)Integer id, @RequestBody PointInteret pointInteret ){
-		 service.update(id, pointInteret);	 
-	 }
+	public void update(@PathVariable(required = true) Integer id, @RequestBody PointInteret pointInteret) {
+		service.update(id, pointInteret);
+	}
 }
