@@ -60,5 +60,9 @@ public void postEquipementEntity(@RequestBody Equipement equipement) {
 	public void update(@PathVariable(required = true)Integer id, @RequestBody Equipement equipement){
 		service.update(id,equipement);
 	}
+	@GetMapping("trajet/{id}")
+	public List<Equipement> getEquipementByTrajetId(@PathVariable(required = true) Integer id) {
+		return this.service.getByTrajetId(id) ;
+	}
 
 }
