@@ -1,7 +1,6 @@
 package com.velone.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,6 @@ public class StatistiqueService {
 
 	@Autowired
 	StatistiqueRepository repository;
-
-	// CRUD ToTest
 
 	public void add(Statistique stat) {
 		repository.save(stat);
@@ -41,12 +38,10 @@ public class StatistiqueService {
 		repository.save(statToUpdate);
 	}
 
-	// Methode propres ToTest
-
 	public List<Statistique> getStatistiqueByMembreId(int membre_id) {
 		return repository.findByMembreId(membre_id);
 	}
-	
+
 	public Statistique getStatistiqueById(int id) {
 		return repository.getOne(id);
 	}
