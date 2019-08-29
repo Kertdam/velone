@@ -13,5 +13,6 @@ public interface EquipementRepository extends JpaRepository<Equipement, Integer>
 	List<Equipement> findByNomContainsIgnoreCase(String nom);
   
 //	List<Equipement> findEquipementById(Integer id);
+	List<Equipement> findByTrajetId(Integer id);
 
 }

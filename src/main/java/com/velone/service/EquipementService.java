@@ -46,6 +46,11 @@ public class EquipementService {
 		equipementToUpdate.setTrajet(equipement.getTrajet());
 
 		repository.save(equipementToUpdate);
+		
+	}
+	public List<Equipement> getByTrajetId(Integer id) {
+		// TODO Auto-generated method stub
+		return repository.findByTrajetId(id);
 	}
 
 }
