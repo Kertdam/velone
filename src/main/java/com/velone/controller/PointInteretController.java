@@ -16,7 +16,7 @@ import com.velone.entity.Etape;
 import com.velone.entity.PointInteret;
 import com.velone.service.PointInteretService;
 
-@RequestMapping("/pointInteret")
+@RequestMapping("/pointinteret")
 @RestController
 public class PointInteretController {
 	
@@ -26,6 +26,7 @@ public class PointInteretController {
 	public List<PointInteret> get() {
 		return service.getPointInterets();
 	}
+	
 	@PostMapping ("")
 	public void postPointInteretEntity(@RequestBody PointInteret pointInteret) {
 		service.add(pointInteret);	
@@ -35,10 +36,18 @@ public class PointInteretController {
 	public void delete(@PathVariable(required = true) Integer id) {
 		service.Delete(id);
 	}
+	
 	@GetMapping("idUtilisateur/{id}")
 	public List<PointInteret> getPointInteretByUtilisateur(@PathVariable(required = true) Integer id){
 		return service.getPointInteretByUtilisateur(id);
 	}
+	
+	@GetMapping("/{id}")
+	public PointInteret getById(@PathVariable(required = true) Integer id) {
+		return service.getPointInteretById(id);
+	}
+	
+	
 	@PutMapping("/{id}")
 	 public void update(@PathVariable(required = true)Integer id, @RequestBody PointInteret pointInteret ){
 		 service.update(id, pointInteret);	 
