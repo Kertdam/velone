@@ -15,7 +15,7 @@ import com.velone.entity.Message;
 import com.velone.service.MessageService;
 
 @RestController
-@RequestMapping("/message")
+@RequestMapping("/messages")
 public class MessageController {
 
 	@Autowired
@@ -29,7 +29,7 @@ public class MessageController {
 
 	// OK
 	@GetMapping
-	public List<Message> getAllMessages() {
+	public List<Message> getMessages() {
 		return service.getAllMessages();
 	}
 
@@ -40,7 +40,7 @@ public class MessageController {
 	}
 
 	// OK
-	@GetMapping("membreid/{id}")
+	@GetMapping("membreId/{id}")
 	public List<Message> getMessageByMembreId(@PathVariable(required = true) Integer id) {
 		return service.getMessageByMembreId(id);
 	}
@@ -51,7 +51,7 @@ public class MessageController {
 		service.delete(id);
 	}
 
-	@GetMapping("idtrajet/{id}")
+	@GetMapping("trajetId/{id}")
 	public List<Message> getAllMessageInTrajet(@PathVariable(required = true) Integer id) {
 		return service.getAllMessageInTrajet(id);
 	}
