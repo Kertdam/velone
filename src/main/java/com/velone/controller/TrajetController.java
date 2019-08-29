@@ -19,10 +19,11 @@ import com.velone.service.TrajetService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/trajet")
+@RequestMapping("/trajets")
 public class TrajetController {
 
-	@Autowired TrajetService service;
+	@Autowired
+	TrajetService service;
 
 	@GetMapping
 	public List<Trajet> getTrajets() {
@@ -38,12 +39,12 @@ public class TrajetController {
 	public Optional<Trajet> getById(@PathVariable(required = true) Integer id) {
 		return service.getTrajetById(id);
 	}
-	
-	@GetMapping("idUtilisateur/{id}")
+
+	@GetMapping("utilisateurId/{id}")
 	public List<Trajet> getTrajetsByUtilisateurId(@PathVariable(required = true) Integer id) {
 		return service.getTrajetsByUtilisateurId(id);
 	}
-	
+
 	@GetMapping("nom/{nom}")
 	public List<Trajet> getTrajetsByNom(@PathVariable(required = true) String nom) {
 		return service.getTrajetsByNom(nom);
@@ -55,8 +56,8 @@ public class TrajetController {
 	}
 
 	@PutMapping("/{id}")
-	public void update(@PathVariable(required = true)Integer id, @RequestBody Trajet trajet){
-		service.update(id,trajet);
+	public void update(@PathVariable(required = true) Integer id, @RequestBody Trajet trajet) {
+		service.updateById(id, trajet);
 	}
-	
+
 }
