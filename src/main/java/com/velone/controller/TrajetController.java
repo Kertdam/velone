@@ -1,5 +1,6 @@
 package com.velone.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.velone.entity.Membre;
 import com.velone.entity.Trajet;
+import com.velone.service.MembreService;
 import com.velone.service.TrajetService;
 
 @CrossOrigin
@@ -24,6 +27,8 @@ public class TrajetController {
 
 	@Autowired
 	TrajetService service;
+	@Autowired
+	MembreService serviceMembre;
 
 	@GetMapping
 	public List<Trajet> getTrajets() {
@@ -58,6 +63,21 @@ public class TrajetController {
 	@PutMapping("/{id}")
 	public void update(@PathVariable(required = true) Integer id, @RequestBody Trajet trajet) {
 		service.updateById(id, trajet);
+	}
+
+	@GetMapping("membreId/{id}")
+	public List<Trajet> getTrajetsByMembre(@PathVariable Integer id) {
+
+		List<Membre> listMembre = serviceMembre.getByUtilisateurId(id);
+		List<Trajet> listTrajet = new ArrayList<>();
+//		System.out.println(listMembre);
+//
+//		for (Membre membre : listMembre) {
+//
+//			listTrajet.add(membre.getTrajet());
+//		}
+//		System.out.println(listTrajet);
+		return listTrajet;
 	}
 
 }

@@ -45,6 +45,11 @@ public class MembreController {
 	@GetMapping("trajetId/{id}")
 	public List<Membre> getAllMembreInTrajet(@PathVariable(required = true) Integer id) {
 		return service.getByTrajetId(id);
+	}
+
+	@GetMapping("utilisateurId/{id}")
+	public List<Membre> getAllMembreByUtilisateurId(@PathVariable(required = true) Integer id) {
+		return service.getMembresByUtilisateurId(id);
 
 	}
 }
