@@ -68,15 +68,22 @@ public class TrajetController {
 	@GetMapping("membreId/{id}")
 	public List<Trajet> getTrajetsByMembre(@PathVariable Integer id) {
 
-		List<Membre> listMembre = serviceMembre.getByUtilisateurId(id);
+		List<Membre> listMembre = serviceMembre.getMembresByUtilisateurId(id);
 		List<Trajet> listTrajet = new ArrayList<>();
-//		System.out.println(listMembre);
-//
+		System.out.println(listMembre);
+
+		Trajet trajet = new Trajet();
+		trajet = listMembre.get(0).getTrajet();
+		listTrajet.add(trajet);
+		System.out.println(trajet);
+		
 //		for (Membre membre : listMembre) {
 //
-//			listTrajet.add(membre.getTrajet());
+//			Trajet trajet = new Trajet();
+//			trajet = membre.getTrajet();
+//			listTrajet.add(trajet);
 //		}
-//		System.out.println(listTrajet);
+		System.out.println(listTrajet);
 		return listTrajet;
 	}
 
