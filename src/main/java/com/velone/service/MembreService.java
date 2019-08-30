@@ -19,6 +19,10 @@ public class MembreService {
 		repository.save(membre);
 	}
 
+	public List<Membre> getMembresByUtilisateurId(Integer id) {
+		return repository.findAllByUtilisateurId(id);
+	}
+
 	public List<Membre> getMembres() {
 		return repository.findAll();
 	}

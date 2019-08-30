@@ -14,6 +14,8 @@ public interface MembreRepository extends JpaRepository<Membre, Integer> {
 
 	public List<Membre> findAllByUtilisateur(Utilisateur utilisateur);
 
+	public List<Membre> findAllByUtilisateurId(Integer id);
+
 	public List<Membre> findByTrajetId(Integer id);
 
 	public List<Membre> findByUtilisateurId(Integer id);
