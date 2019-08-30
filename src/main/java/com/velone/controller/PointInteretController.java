@@ -3,6 +3,7 @@ package com.velone.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.velone.entity.PointInteret;
 import com.velone.service.PointInteretService;
 
+@CrossOrigin
 @RequestMapping("/pointsinteret")
 @RestController
 public class PointInteretController {
