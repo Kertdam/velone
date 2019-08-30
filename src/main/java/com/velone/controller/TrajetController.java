@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.velone.entity.Membre;
 import com.velone.entity.Trajet;
+import com.velone.exception.ResourcesNotFoundException;
 import com.velone.service.MembreService;
 import com.velone.service.TrajetService;
 
@@ -69,21 +70,19 @@ public class TrajetController {
 	public List<Trajet> getTrajetsByMembre(@PathVariable Integer id) {
 
 		List<Membre> listMembre = serviceMembre.getMembresByUtilisateurId(id);
+		List<Integer> listTrajetId = new ArrayList<>();
+		// Recup l'id des trajets dans la liste de membre
+		for (Membre membre : listMembre) {
+			Integer TrajetId = membre.getTrajet().getId();
+			listTrajetId.add(TrajetId);
+		}
 		List<Trajet> listTrajet = new ArrayList<>();
-		System.out.println(listMembre);
-
-		Trajet trajet = new Trajet();
-		trajet = listMembre.get(0).getTrajet();
-		listTrajet.add(trajet);
-		System.out.println(trajet);
-		
-//		for (Membre membre : listMembre) {
-//
-//			Trajet trajet = new Trajet();
-//			trajet = membre.getTrajet();
-//			listTrajet.add(trajet);
-//		}
-		System.out.println(listTrajet);
+		// Recup trajet grâce à la liste des TrajetId
+		for (Integer trajetId : listTrajetId) {
+			Trajet trajet = service.getTrajetById(trajetId)
+					.orElseThrow(() -> new ResourcesNotFoundException("trajet", "id", trajetId));
+			listTrajet.add(trajet);
+		}
 		return listTrajet;
 	}
 
