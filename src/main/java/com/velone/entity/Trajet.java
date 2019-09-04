@@ -50,7 +50,7 @@ public class Trajet {
 	@JoinColumn(name ="utilisateur_id")
 	private Utilisateur utilisateur;
 	
-	@JsonIgnore
+	@JsonManagedReference
 	@OneToMany(mappedBy="trajet",cascade = CascadeType.ALL,orphanRemoval = true)
 	@OrderBy("numero ASC")
     private Set<Etape> etapes;
