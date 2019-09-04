@@ -38,6 +38,7 @@ public class Etape {
 	@Column(name="numero")
 	private Integer numero;
 	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name ="trajet_id")
 	private Trajet trajet;
